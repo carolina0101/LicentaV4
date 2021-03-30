@@ -282,7 +282,7 @@ class Post
 
 			//save likes details
 
-			$sql = "select likes from likes where type='$type' && contentid = '$id' and likes!=[] limit 1";
+			$sql = "select likes from likes where type='$type' && contentid = '$id' limit 1";
 			$result = $DB->read($sql);
 
 

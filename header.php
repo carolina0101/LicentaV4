@@ -27,12 +27,20 @@
 
 
 				<a href="login.php">
+
 				<span style="font-size: 15px; float: right; margin:10px;color:white;">Logout</span>
 				</a>
+
+
 				<a href="profile.php">
 				<img src="<?php echo $corner_image ?>" style="width: 71px; float: right;">
 		 		</a>
-
+				 <a href="notifications.php">
+				<span style="display:inline-block;position:relative;">
+				<img src = "notif.png" style="width:34px;float:right;margin-top: 20px; ">
+				<div style="background-color: #c79dba;color: black;position:absolute;right:-5px;width:15px;height:15px;border-radius: 50%;padding:4px;text-align:center;font-size:15px;">0</div>
+				</span>
+				</a>
 		</div>
 			</form>
 	</div>
