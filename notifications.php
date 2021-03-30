@@ -123,10 +123,12 @@
     }
 
 	#notification{
-		height: 40px;
+		height: 50px;
 		background-color: #ede4e6;
 		color: #c79d90;
 		border: 1px solid #aaa;
+		margin: 4px;
+
 	}
 
 
@@ -154,15 +156,13 @@
 				$data = $DB->read($query);
 			?>
 			<?php if(is_array($data)) : ?>
-			<?php foreach ($data as $notif_row): ?>
+			<?php foreach ($data as $notif_row):
 
-				<div id="notification"> </div>
-
-				</div>
-			<?php endforeach; ?>
+				include("single_notification.php");
+			 endforeach; ?>
 			<?php endif; ?>
 			</div>
-         </div>
+        </div>
 	</div>
 </div>
 
