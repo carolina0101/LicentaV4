@@ -308,6 +308,13 @@ class Post
 				$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
 				$DB->save($sql);
 
+				$post = new Post();
+				$single_post = $post->get_one_post($id);
+
+				//add notif
+
+				add_notification($_SESSION['petbook_userid'], "like", $single_post);
+
 			}else
 			{
 				$key = array_search($petbook_userid, $user_ids);
@@ -337,6 +344,13 @@ class Post
 
 				$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
 				$DB->save($sql);
+
+				$post = new Post();
+				$single_post = $post->get_one_post($id);
+
+				//add notif
+
+				add_notification($_SESSION['petbook_userid'], "like", $single_post);
 			}
 
 	}

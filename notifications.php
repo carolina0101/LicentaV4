@@ -152,7 +152,8 @@
 			<?php
 
 				$DB = new Database();
-				$query = "select * from notifications limit 30";
+				$id = esc($_SESSION['petbook_userid']);
+				$query = "select * from notifications where content_owner = '$id' order by id desc limit 30";
 				$data = $DB->read($query);
 			?>
 			<?php if(is_array($data)) : ?>
@@ -160,6 +161,8 @@
 
 				include("single_notification.php");
 			 endforeach; ?>
+			<?php else: ?>
+				No notification were found!
 			<?php endif; ?>
 			</div>
         </div>

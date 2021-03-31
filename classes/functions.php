@@ -82,6 +82,7 @@
         if(isset($row->gender))
         {
             $content_type = "profile";
+            $contentid = $row->userid;
         }
 
         $query = "insert into content_i_follow(userid, date, contentid, content_type) values ('$userid', '$date', '$contentid', '$content_type') ";

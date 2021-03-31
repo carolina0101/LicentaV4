@@ -107,6 +107,14 @@ class User
 					$sql = "update likes set following = '$likes_string' where type='$type' && contentid = '$petbook_userid' limit 1";
 					$DB->save($sql);
 
+					$user = new User();
+					$single_post = $user->get_user($petbook_userid);
+
+					//add notif
+
+					add_notification($_SESSION['petbook_userid'], "follow", $single_post);
+
+
 				}else
 				{
 					$key = array_search($id, $user_ids);
@@ -129,6 +137,14 @@ class User
 				$following = json_encode($arr2);
 				$sql = "insert into likes (type,contentid,following) values('$type','$petbook_userid','$following')";
 				$DB->save($sql);
+
+
+				$user = new User();
+				$single_post = $user->get_user($petbook_userid);
+
+				//add notif
+
+				add_notification($_SESSION['petbook_userid'], "follow", $single_post);
 
 			}
 

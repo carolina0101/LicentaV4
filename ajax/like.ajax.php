@@ -43,15 +43,13 @@ if($_SESSION['petbook_userid'] == 0)
                 $user_class = new User();
                 //$post->like_post($_GET['id'], $_GET['type'], $_SESSION['petbook_userid']);
                 //die;
-                $single_post = $post->get_one_post($_GET['id']);
+
 
                 if($_GET['type'] == "user")
                 {
                     $user_class->follow_user($_GET['id'],$_GET['type'],$_SESSION['petbook_userid']);
-                    $single_post = $user_class->get_user($_GET['id']);
-                }
 
-                add_notification($_SESSION['petbook_userid'], "like", $single_post);
+                }
             }
 
         }
