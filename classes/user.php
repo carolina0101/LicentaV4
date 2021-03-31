@@ -83,11 +83,10 @@ class User
 			$DB = new Database();
 
 			//save likes details
-			// var_dump($type);
-			// var_dump($petbook_userid);
+
 			$sql = "select following from likes where type='$type' && contentid = '$petbook_userid' && likes=0 limit 1 ";
 			$result = $DB->read($sql);
-			//var_dump($result);
+
 			if(is_array($result))
 			{
 
@@ -108,7 +107,7 @@ class User
 					$DB->save($sql);
 
 					$user = new User();
-					$single_post = $user->get_user($petbook_userid);
+					$single_post = $user->get_user($id);
 
 					//add notif
 
@@ -140,7 +139,7 @@ class User
 
 
 				$user = new User();
-				$single_post = $user->get_user($petbook_userid);
+				$single_post = $user->get_user($id);
 
 				//add notif
 

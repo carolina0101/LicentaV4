@@ -31,12 +31,6 @@ function connect()
 		{
 			$data = false;
 
-			// if(strstr($query, "delete"))
-			// {
-			//  	var_dump($query);
-			//  	var_dump($result);
-			// 	die;
-			// }
 
 
 			while($row = mysqli_fetch_assoc($result))

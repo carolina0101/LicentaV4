@@ -182,6 +182,8 @@ class Post
 
 		if(!is_numeric($postid))
 		{
+
+
 			return false;
 		}
 		$query = "select * from posts where postid ='$postid' limit 1";
@@ -308,12 +310,15 @@ class Post
 				$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
 				$DB->save($sql);
 
-				$post = new Post();
-				$single_post = $post->get_one_post($id);
+				if($type != "user")
+				{
+					$post = new Post();
+					$single_post = $post->get_one_post($id);
 
-				//add notif
+					//add notif
 
-				add_notification($_SESSION['petbook_userid'], "like", $single_post);
+					add_notification($_SESSION['petbook_userid'], "like", $single_post);
+				}
 
 			}else
 			{
@@ -345,12 +350,16 @@ class Post
 				$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
 				$DB->save($sql);
 
-				$post = new Post();
-				$single_post = $post->get_one_post($id);
+				if($type != "user")
+				{
+					$post = new Post();
+					$single_post = $post->get_one_post($id);
 
-				//add notif
+					//add notif
 
-				add_notification($_SESSION['petbook_userid'], "like", $single_post);
+					add_notification($_SESSION['petbook_userid'], "like", $single_post);
+				}
+
 			}
 
 	}

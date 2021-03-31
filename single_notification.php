@@ -3,6 +3,7 @@
         $owner = $User->get_user($notif_row['content_owner']);
         $id = esc($_SESSION['petbook_userid']);
 
+
         $link = "";
 
         if($notif_row['content_type'] == "post")
@@ -11,14 +12,14 @@
         }else
         if($notif_row['content_type'] == "profile")
         {
-
+            $link = "profile.php?id=" . $notif_row['userid'];
         }
-        if($notif_row['content_type'] == "post")
+        if($notif_row['content_type'] == "comment")
         {
 
         }
     ?>
-<a href="<?php echo $link ?>" style="text decoration: none;">
+    <a href="<?php echo $link ?>" style="text decoration: none;">
     <div id="notification">
 
     <?php
@@ -38,7 +39,7 @@
                 echo " liked ";
             }else
 
-            if($notif_row['activity'] == "followed")
+            if($notif_row['activity'] == "follow")
             {
                 echo " followed ";
             }
@@ -52,13 +53,37 @@
                 echo " your ";
             }
 
+            if($notif_row['content_type'] == "post")
+            {
+                //var_dump($notif_row['contentid']);
+                $content_row = $postari->get_one_post($notif_row['contentid']);
 
-            echo $notif_row['content_type'];
+
+                if($content_row['has_image'])
+                {
+                    echo "image";
+
+                    if(file_exists($content_row['image']))
+					{
+						$post_image = $image_class->get_thumb_post ($content_row['image']);
+
+						echo "<img src='$post_image' style='width:50px;float: right;' />";
+					}
+                }else
+                {
+                    echo $notif_row['content_type'];
+                }
+
+            }else
+            {
+                echo $notif_row['content_type'];
+            }
+
 
             $date = date("jS/M/Y H:i:s a", strtotime($notif_row['date']));
             echo "<br>
 
-                <span style='float:right;font-size:11px;color: #888; display:inline-block;margin-right: 2px;'>$date</span>
+                <span style='font-size:11px;color: #888; display:inline-block;margin-right: 2px;'>$date</span>
 
             ";
         }

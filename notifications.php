@@ -23,8 +23,9 @@
 		}
 	}
 
- 	$postare = new Post();
+ 	$postari = new Post();
 	$User = new User();
+	$image_class = new Image();
 
 
 ?>
@@ -153,8 +154,10 @@
 
 				$DB = new Database();
 				$id = esc($_SESSION['petbook_userid']);
-				$query = "select * from notifications where content_owner = '$id' order by id desc limit 30";
+				//var_dump($id);
+				$query = "select * from notifications where userid != '$id' && content_owner = '$id' order by id desc limit 30";
 				$data = $DB->read($query);
+				//var_dump($data);
 			?>
 			<?php if(is_array($data)) : ?>
 			<?php foreach ($data as $notif_row):

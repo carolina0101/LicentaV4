@@ -10,7 +10,7 @@ if($_SESSION['petbook_userid'] == 0)
     $obj->action = "like_post";
 
     echo json_encode($obj);
-    die;
+
 }
 
 // $query_string = explode("?", $data->link);

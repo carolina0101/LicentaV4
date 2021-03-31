@@ -37,7 +37,7 @@
 			if($result == "")
 			{
 				header("Location: single_post.php?id=$_GET[id]");
-				die;
+
 			}else
 			{
 				echo"<div style='text-align:center;font-size: 12px; color:white;background-color:grey;'>";
