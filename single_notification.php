@@ -16,7 +16,7 @@
         }
         if($notif_row['content_type'] == "comment")
         {
-
+            $link = "single_post.php?id=" . $notif_row['contentid'];
         }
     ?>
     <a href="<?php echo $link ?>" style="text decoration: none;">
@@ -25,7 +25,19 @@
     <?php
         if(is_array($actor) && is_array($owner))
         {
-            echo "<img src='images/profileimage.jpg' style='width:40px;margin:4px;float:left;' />";
+
+				$image ="images/profileimage.jpg";
+				if($actor['gender']== "Male")
+				{
+					$image = "images/profileimage.jpg";
+				}
+
+				if(file_exists($actor['profile_image']))
+				{
+					$image = $image_class->get_thumb_profile($actor['profile_image']);
+				}
+
+            echo "<img src='$image' style='width:40px;margin:4px;float:left;' />";
             if($actor['userid'] != $id)
             {
                 echo $actor['first_name'] . " " . $actor['last_name'];

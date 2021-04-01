@@ -154,10 +154,9 @@
 
 				$DB = new Database();
 				$id = esc($_SESSION['petbook_userid']);
-				//var_dump($id);
 				$query = "select * from notifications where userid != '$id' && content_owner = '$id' order by id desc limit 30";
 				$data = $DB->read($query);
-				//var_dump($data);
+
 			?>
 			<?php if(is_array($data)) : ?>
 			<?php foreach ($data as $notif_row):
