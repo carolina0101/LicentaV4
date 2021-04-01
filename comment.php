@@ -1,7 +1,10 @@
+
+
 	<div id="post">
 		<div>
 			<?php
-
+				// var_dump($ROW_USER);
+				$ROW_USER = $user->get_user($ROW['userid']);
 				$image ="images/profileimage.jpg";
 				if($ROW_USER['gender']== "Male")
 				{
@@ -19,6 +22,7 @@
 			<div style="font-weight:bold;color: #6b222f; width: 100%;">
 				<?php
 					echo "<a href = 'profile.php?id=$ROW[userid]'>";
+					// var_dump($ROW);
 					echo $ROW_USER['first_name'] . " " . $ROW_USER['last_name'];
 					echo "</a>";
 
@@ -160,4 +164,5 @@
 					?>
 			</div>
 		</div>
+
 

@@ -51,14 +51,21 @@
 
     $postari = new Post();
     $ROW = false;
-	$Post = "";
+	// $Post = "";
 
 
     $ERROR = "";
 
+
+
     if(isset($_GET['id']))
     {
+
 		$ROW = $postari->get_single_post($_GET['id']);
+		if(!$ROW)
+		{
+			$ROW = $postari->get_single_post_from_id($_GET['id']);
+		}
 
 	}else
     {
@@ -187,15 +194,16 @@
 						notification_seen($_GET['notif']);
 					}
 
+					$user= new User();
                     $image_class = new Image();
-                    $user= new User();
 
 
                     if(is_array($ROW))
                     {
 
-    					$ROW_USER = $user->get_user($ROW['userid']);
 
+
+    					$ROW_USER = $user->get_user($ROW['userid']);
 						include("post.php");
                     }
 
@@ -220,6 +228,7 @@
 
 						if(is_array($comments))
 						{
+
 							foreach ($comments as $ROW)
 							{
 								include("comment.php");

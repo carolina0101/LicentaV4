@@ -8,7 +8,7 @@
 	$user_data = $login->check_login($_SESSION['petbook_userid']);
 
 	$USER= $user_data;
-	$DB = new Database;
+	$DB = new Database();
 
 	if(isset($_GET['id']))
 	{

@@ -221,6 +221,27 @@ class Post
 		}
 	}
 
+	public function get_single_post_from_id($postid)
+	{
+		var_dump($postid);
+		if(!is_numeric($postid))
+		{
+			return false;
+		}
+		$query = "select * from posts where id ='$postid' limit 1";
+
+		$DB = new Database();
+		$result = $DB->read($query);
+
+		if($result)
+		{
+			return $result[0];
+		}else
+		{
+			return false;
+		}
+	}
+
 	public function delete_post($postid)
 	{
 

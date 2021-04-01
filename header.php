@@ -38,7 +38,40 @@
 				 <a href="notifications.php">
 				<span style="display:inline-block;position:relative;">
 				<img src = "notif.png" style="width:34px;float:right;margin-top: 20px; ">
+
 				<?php
+
+				function check_notifications()
+				{
+					$number = 0;
+
+					$userid = $_SESSION['petbook_userid'];
+					$DB = new Database();
+
+					$query = "select * from notifications where userid != '$userid' && content_owner = '$userid' limit 30";
+					$data = $DB->read($query);
+
+					if(is_array($data))
+					{
+						foreach ($data as $row)
+						{
+
+
+							$query= "select * from notification_seen where userid = '$userid' && notification_id = '$row[id]' limit 1";
+							$check = $DB->read($query);
+
+							if(!is_array($check))
+							{
+							$number++;
+							}
+						}
+					}
+
+					return $number;
+				}
+
+
+
 					$notif = check_notifications();
 				?>
 				<?php if($notif > 0): ?>

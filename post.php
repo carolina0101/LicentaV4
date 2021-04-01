@@ -77,7 +77,7 @@
 						$comments = "(" . $ROW['comments'] . ")";
 					}
 				?>
-				<a href="single_post.php?id=<?php echo $ROW['postid'] ?>"> Comment<?php echo $comments ?></a>
+				<a href="single_post.php?id=<?php echo $ROW['id'] ?>"> Comment<?php echo $comments ?></a>
 				<span style="color: #aaa;">
 					<?php echo $ROW['date'] ?>
 				</span>
