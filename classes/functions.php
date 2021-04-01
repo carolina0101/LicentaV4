@@ -113,3 +113,32 @@ function notification_seen($id)
 
 }
 
+function check_notifications()
+{
+    $number = 0;
+
+    $userid = $_SESSION['petbook_userid'];
+    $DB = new Database();
+
+    $query = "select * from notifications where userid != '$userid' && content_owner = '$userid' limit 30";
+	$data = $DB->read($query);
+
+    if(is_array($data))
+    {
+        foreach ($data as $row)
+        {
+
+
+            $query= "select * from notification_seen where userid = '$userid' && notification_id = '$row[id]' limit 1";
+            $check = $DB->read($query);
+
+            if(!is_array($check))
+            {
+               $number++;
+            }
+        }
+    }
+
+    return $number;
+}
+

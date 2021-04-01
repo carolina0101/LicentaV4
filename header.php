@@ -38,7 +38,12 @@
 				 <a href="notifications.php">
 				<span style="display:inline-block;position:relative;">
 				<img src = "notif.png" style="width:34px;float:right;margin-top: 20px; ">
-				<div style="background-color: #c79dba;color: black;position:absolute;right:-5px;width:15px;height:15px;border-radius: 50%;padding:4px;text-align:center;font-size:15px;">0</div>
+				<?php
+					$notif = check_notifications();
+				?>
+				<?php if($notif > 0): ?>
+				<div style="background-color: #e02510;color: black;position:absolute;margin-top:5px;right:-3px;width:15px;height:15px;border-radius: 50%;padding:4px;text-align:center;font-size:15px;"><?= $notif ?></div>
+				<?php endif; ?>
 				</span>
 				</a>
 		</div>
