@@ -8,19 +8,32 @@
 
         if($notif_row['content_type'] == "post")
         {
-            $link = "single_post.php?id=" . $notif_row['contentid'];
+            $link = "single_post.php?id=" . $notif_row['contentid'] . "&notif=" . $notif_row['id'];
         }else
         if($notif_row['content_type'] == "profile")
         {
-            $link = "profile.php?id=" . $notif_row['userid'];
+            $link = "profile.php?id=" . $notif_row['userid'] . "&notif=" . $notif_row['id'];
         }
         if($notif_row['content_type'] == "comment")
         {
-            $link = "single_post.php?id=" . $notif_row['contentid'];
+            $link = "single_post.php?id=" . $notif_row['contentid'] . "&notif=" . $notif_row['id'];
         }
+        //seen notif
+
+        $query= "select * from notification_seen where userid = '$id' && notification_id = '$notif_row[id]' limit 1";
+        $seen = $DB->read($query);
+
+        if(is_array($seen))
+        {
+            $color = "#dbc7c3";
+        }else
+        {
+            $color = "#e3b2aa";
+        }
+
     ?>
-    <a href="<?php echo $link ?>" style="text decoration: none;">
-    <div id="notification">
+    <a href="<?php echo $link ?>" style="text-decoration: none;">
+    <div id="notification" style="background-color: <?= $color ?> ">
 
     <?php
         if(is_array($actor) && is_array($owner))
@@ -64,11 +77,9 @@
             {
                 echo " your ";
             }
-
+            $content_row = $postari->get_one_post($notif_row['contentid']);
             if($notif_row['content_type'] == "post")
             {
-                //var_dump($notif_row['contentid']);
-                $content_row = $postari->get_one_post($notif_row['contentid']);
 
 
                 if($content_row['has_image'])
@@ -89,6 +100,9 @@
             }else
             {
                 echo $notif_row['content_type'];
+                echo"
+                        <span style='float:right;font-size:11px;color:#888;display:inline-block; margin-right: 5px;'>'".htmlspecialchars(substr($content_row['post'],0,50))."'</span>
+                        ";
             }
 
 

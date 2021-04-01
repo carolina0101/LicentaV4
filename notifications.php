@@ -126,7 +126,7 @@
 	#notification{
 		height: 50px;
 		background-color: #ede4e6;
-		color: #c79d90;
+		color: black;
 		border: 1px solid #aaa;
 		margin: 4px;
 

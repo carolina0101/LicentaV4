@@ -95,3 +95,21 @@
         return addslashes($value);
     }
 
+function notification_seen($id)
+{
+    $notification_id = addslashes($id);
+    $userid = $_SESSION['petbook_userid'];
+    $DB = new Database();
+
+    $query= "select * from notification_seen where userid = '$userid' && notification_id = '$notification_id' limit 1";
+    $check = $DB->read($query);
+
+    if(!is_array($check))
+    {
+        $query = "insert into notification_seen(userid, notification_id) values ('$userid', '$notification_id')";
+
+        $DB->save($query);
+    }
+
+}
+

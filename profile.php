@@ -71,6 +71,11 @@
 
 	$image_class = new Image();
 
+	if(isset($_GET['notif']))
+	{
+		notification_seen($_GET['notif']);
+	}
+
 
 ?>
 

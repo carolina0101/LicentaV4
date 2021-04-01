@@ -181,6 +181,11 @@
 			<div style="border:solid thin #aaa; padding: 10px;">
 
                 <?php
+					//notification bar
+					if(isset($_GET['notif']))
+					{
+						notification_seen($_GET['notif']);
+					}
 
                     $image_class = new Image();
                     $user= new User();
