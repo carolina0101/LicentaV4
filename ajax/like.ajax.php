@@ -41,12 +41,13 @@ if($_SESSION['petbook_userid'] == 0)
             {
 
                 $user_class = new User();
-                //$post->like_post($_GET['id'], $_GET['type'], $_SESSION['petbook_userid']);
-                //die;
+                $post->like_post($_GET['id'], $_GET['type'], $_SESSION['petbook_userid']);
+                die;
 
 
                 if($_GET['type'] == "user")
                 {
+
                     $user_class->follow_user($_GET['id'],$_GET['type'],$_SESSION['petbook_userid']);
 
                 }

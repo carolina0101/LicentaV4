@@ -138,7 +138,7 @@
 	<br>
 	<?php include("header.php"); ?>
 	<!--cover-->
-	<div style="width: 700px; margin:auto; min-height: 400px;">
+	<div style="width: 700px; margin:auto; min-height: 400px;"
 
 
 	<!--partea de jos-->
@@ -159,8 +159,13 @@
 
 			?>
 			<?php if(is_array($data)) : ?>
-			<?php foreach ($data as $notif_row):
+			<?php
+				//echo '<pre>' , var_dump($data) , '</pre>';
 
+
+				foreach ($data as $notif_row):
+				// echo '<pre>' , var_dump($notif_row) , '</pre>';
+				// echo '<pre>' , var_dump($user_data) , '</pre>';
 				include("single_notification.php");
 			 endforeach; ?>
 			<?php else: ?>

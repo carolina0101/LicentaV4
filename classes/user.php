@@ -84,11 +84,12 @@ class User
 
 			//save likes details
 
-			$sql = "select following from likes where type='$type' && contentid = '$petbook_userid' && likes=0 limit 1 ";
+			$sql = "select following from likes where type='$type' && contentid = '$petbook_userid' && likes='' ";
 			$result = $DB->read($sql);
 
 			if(is_array($result))
 			{
+
 
 				$likes = json_decode($result[0]['following'], true);
 
@@ -97,6 +98,7 @@ class User
 
 				if(!in_array($petbook_userid, $user_ids))
 				{
+
 					$arr["userid"] = $id;
 					$arr["date"] = date("Y-m-d H:i:s");
 
@@ -118,8 +120,9 @@ class User
 				{
 					$key = array_search($id, $user_ids);
 					unset($likes[$key]);
-					//print_r('CE PLM');
+
 					$likes_string =json_encode($likes);
+					//var_dump($likes_string);print_r('ESTI IN USER.PHP in follow user <- likes_string');
 					$sql = "update likes set following = '$likes_string' where type='$type' && contentid = '$petbook_userid' limit 1";
 					$DB->save($sql);
 

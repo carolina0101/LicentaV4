@@ -38,7 +38,9 @@ function connect()
 
 				$data[] = $row;
 			}
-
+			// print_r('MOTA');
+			// print_r($query);
+			// echo '<pre>' , var_dump($data) , '</pre>';
 			return $data;
 		}
 	}

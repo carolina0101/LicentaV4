@@ -63,6 +63,8 @@
 
     function content_i_follow($userid, $row)
     {
+        $row = (object)$row;
+
         $userid = esc($userid);
         $date = date("Y-m-d H:i:s");
         $contentid = 0;

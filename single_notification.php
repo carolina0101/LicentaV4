@@ -77,7 +77,12 @@
             {
                 echo " your ";
             }
+            //var_dump($notif_row); //print_r('ESTI IN SINGLE NOTIFICATION notif_row ');
             $content_row = $postari->get_one_post($notif_row['contentid']);
+
+
+
+            // var_dump($content_row);
             if($notif_row['content_type'] == "post")
             {
 
@@ -98,11 +103,18 @@
                 }
 
             }else
-            {
+             {
+
+
+
+                  //var_dump($content_row);
                 echo $notif_row['content_type'];
+                // <echo '<pre>' , var_dump($user_data) , '</pre>';
+                if($notif_row['contentid']!=0){
                 echo"
-                        <span style='float:right;font-size:11px;color:#888;display:inline-block; margin-right: 5px;'>'".htmlspecialchars(substr($content_row['post'],0,50))."'</span>
+                        <span style='float:right;font-size:11px;color:#888;display:inline-block; margin-right: 5px;'>'".htmlspecialchars(substr($content_row["post"],0,50))."'</span>
                         ";
+                }
             }
 
 

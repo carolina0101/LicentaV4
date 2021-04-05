@@ -65,6 +65,12 @@ class Post
 			if(isset($data['parent']) && is_numeric($data['parent']))
 			{
 				$parent = $data['parent'];
+				$mypost = $this->get_one_post($data['parent']);
+
+				if(is_array($mypost) && $mypost['userid'] != $userid)
+				{
+					content_i_follow($userid, $mypost);
+				}
 
 				$sql = "update posts set comments = comments + 1 where postid = $parent limit 1";
 
@@ -223,7 +229,7 @@ class Post
 
 	public function get_single_post_from_id($postid)
 	{
-		var_dump($postid);
+		//var_dump($postid);
 		if(!is_numeric($postid))
 		{
 			return false;
@@ -305,9 +311,9 @@ class Post
 
 			//save likes details
 
-			$sql = "select likes from likes where type='$type' && contentid = '$id' limit 1";
+			$sql = "select likes from likes where type='$type' && contentid = '$id' && likes!='' limit 1";
 			$result = $DB->read($sql);
-
+			//var_dump($sql);
 
 
 			if(is_array($result))
@@ -318,68 +324,70 @@ class Post
 
 
 			if(!in_array($petbook_userid, $user_ids))
-			{
-				$arr["userid"] = $petbook_userid;
-				$arr["date"] = date("Y-m-d H:i:s");
-
-				$likes[] = $arr;
-
-				$likes_string = json_encode($likes);
-				$sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
-				$DB->save($sql);
-
-				$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
-				$DB->save($sql);
-
-				if($type != "user")
 				{
-					$post = new Post();
-					$single_post = $post->get_one_post($id);
+					$arr["userid"] = $petbook_userid;
+					$arr["date"] = date("Y-m-d H:i:s");
 
-					//add notif
+					$likes[] = $arr;
 
-					add_notification($_SESSION['petbook_userid'], "like", $single_post);
+					$likes_string = json_encode($likes);
+					$sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
+					$DB->save($sql);
+
+					$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
+					$DB->save($sql);
+
+					if($type != "user")
+					{
+						$post = new Post();
+						$single_post = $post->get_one_post($id);
+
+						//add notif
+
+						add_notification($_SESSION['petbook_userid'], "like", $single_post);
+					}
+
 				}
 
-			}else
-			{
-				$key = array_search($petbook_userid, $user_ids);
-				unset($likes[$key]);
-
-				$likes_string =json_encode($likes);
-				$sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
-				$DB->save($sql);
-				//increment the right table
-				$sql = "update {$type}s set likes = likes - 1 where {$type}id = '$id' limit 1";
-				$DB->save($sql);
-			}
-
-
-			}else
-			{
-				$arr["userid"] = $petbook_userid;
-				$arr["date"] = date("Y-m-d H:i:s");
-
-				$arr2[] = $arr;
-
-				$likes = json_encode($arr2);
-				$sql = "insert into likes (type,contentid,likes) values('$type','$id','$likes')";
-				$DB->save($sql);
-
-				//increment the posts table
-
-				$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
-				$DB->save($sql);
-
-				if($type != "user")
+				else
 				{
-					$post = new Post();
-					$single_post = $post->get_one_post($id);
+					$key = array_search($petbook_userid, $user_ids);
+					unset($likes[$key]);
 
-					//add notif
-
-					add_notification($_SESSION['petbook_userid'], "like", $single_post);
+					$likes_string =json_encode($likes);
+					$sql = "update likes set likes = '$likes_string' where type='$type' && contentid = '$id' limit 1";
+					$DB->save($sql);
+					//increment the right table
+					$sql = "update {$type}s set likes = likes - 1 where {$type}id = '$id' limit 1";
+					$DB->save($sql);
 				}
+
+
+				}else
+				{
+					$arr["userid"] = $petbook_userid;
+					$arr["date"] = date("Y-m-d H:i:s");
+
+					$arr2[] = $arr;
+
+					$likes = json_encode($arr2);
+					$sql = "insert into likes (type,contentid,likes) values('$type','$id','$likes')";
+					$DB->save($sql);
+
+					//increment the posts table
+
+					$sql = "update {$type}s set likes = likes + 1 where {$type}id = '$id' limit 1";
+					$DB->save($sql);
+
+					if($type != "user")
+					{
+						$post = new Post();
+						$single_post = $post->get_one_post($id);
+
+						//add notif
+
+						add_notification($_SESSION['petbook_userid'], "like", $single_post);
+					}
 
 			}
 

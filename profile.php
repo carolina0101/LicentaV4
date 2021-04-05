@@ -260,6 +260,8 @@
 					echo '<a href="profile.php?section=settings&id='.$user_data['userid'].'"><div id="menu_buttons"> Settings </div></a>';
 				}
 
+
+
 			?>
 	</div>
 	<!--partea de jos-->
