@@ -41,16 +41,24 @@ class Post
 					if(!file_exists($folder))
 					{
 						mkdir($folder, 0777, true);
+						file_put_contents($folder . "index.php", "");
 					}
+					$allowed[] = "image/jpeg";
 
-					$image_class = new Image();
+					if(in_array($files['file']['type'], $allowed))
+					{
+						$image_class = new Image();
 
-					$myimage = $folder . $image_class->generate_filename(15) . ".jpg";
-					move_uploaded_file($_FILES['file']['tmp_name'], $myimage);
+						$myimage = $folder . $image_class->generate_filename(15) . ".jpg";
+						move_uploaded_file($files['file']['tmp_name'], $myimage);
 
-					$image_class->resize_image($myimage,$myimage,1500,1500);
+						$image_class->resize_image($myimage,$myimage,1500,1500);
 
-					$has_image = 1;
+						$has_image = 1;
+					}else
+					{
+						$this->error .= "The selected image is not a valid type!<br>";
+					}
 				}
 			}
 			$post = "";
@@ -59,30 +67,32 @@ class Post
 				$post = addslashes($data['post']);
 			}
 
-			$postid = $this->create_postid();
-			$parent = 0;
-			$DB = new Database();
-			if(isset($data['parent']) && is_numeric($data['parent']))
+			if($this->error == "")
 			{
-				$parent = $data['parent'];
-				$mypost = $this->get_one_post($data['parent']);
-
-				if(is_array($mypost) && $mypost['userid'] != $userid)
+				$postid = $this->create_postid();
+				$parent = 0;
+				$DB = new Database();
+				if(isset($data['parent']) && is_numeric($data['parent']))
 				{
-					content_i_follow($userid, $mypost);
+					$parent = $data['parent'];
+					$mypost = $this->get_one_post($data['parent']);
 
-					add_notification($_SESSION['petbook_userid'], "comment", $single_post);
+					if(is_array($mypost) && $mypost['userid'] != $userid)
+					{
+						content_i_follow($userid, $mypost);
+
+						add_notification($_SESSION['petbook_userid'], "comment", $single_post);
+					}
+
+					$sql = "update posts set comments = comments + 1 where postid = '$parent' limit 1";
+
+					$DB->save($sql);
 				}
 
-				$sql = "update posts set comments = comments + 1 where postid = '$parent' limit 1";
+				$query = "insert into posts (userid, postid, post,image, has_image, is_profile_image, is_cover_image, parent) values ('$userid', '$postid', '$post', '$myimage', '$has_image', '$is_profile_image', '$is_cover_image', '$parent')";
 
-				$DB->save($sql);
-
+				$DB->save($query);
 			}
-
-			$query = "insert into posts (userid, postid, post, image, has_image, is_profile_image, is_cover_image, parent) values ('$userid', '$postid', '$post', '$myimage', '$has_image', '$is_profile_image', '$is_cover_image', '$parent')";
-
-			$DB->save($query);
 
 		}else
 		{
