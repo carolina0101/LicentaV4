@@ -53,6 +53,7 @@
         if(isset($row->gender))
         {
             $content_type = "profile";
+            $contentid = $row->userid;
         }
 
         $query = "insert into notifications(userid, activity, content_owner, date, contentid, content_type) values ('$userid', '$activity', '$content_owner', '$date', '$contentid', '$content_type') ";

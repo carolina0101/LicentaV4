@@ -154,7 +154,26 @@
 
 				$DB = new Database();
 				$id = esc($_SESSION['petbook_userid']);
-				$query = "select * from notifications where userid != '$id' && content_owner = '$id' order by id desc limit 30";
+				$follow = array();
+
+				$sql = "select * from content_i_follow where disabled = 0 && userid '$id' limit 100";
+				$i_follow = $DB->read($sql);
+
+				if(is_array($i_follow))
+				{
+					$follow = array_column($i_follow, "contentid");
+				}
+
+				if(count($follow) > 0)
+				{
+					$str = "'" . implode("','", $follow) . "'";
+
+					$query = "select * from notifications where userid != '$id' && content_owner = '$id' order by id desc limit 30";
+				}else
+				{
+					$query = "select * from notifications where userid != '$id' && content_owner = '$id' order by id desc limit 30";
+				}
+
 				$data = $DB->read($query);
 
 			?>

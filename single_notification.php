@@ -18,6 +18,7 @@
         {
             $link = "single_post.php?id=" . $notif_row['contentid'] . "&notif=" . $notif_row['id'];
         }
+
         //seen notif
 
         $query= "select * from notification_seen where userid = '$id' && notification_id = '$notif_row[id]' limit 1";
@@ -67,6 +68,11 @@
             if($notif_row['activity'] == "follow")
             {
                 echo " followed ";
+            }else
+
+            if($notif_row['activity'] == "comment")
+            {
+                echo " commented ";
             }
 
 

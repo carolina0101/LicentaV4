@@ -70,17 +70,17 @@ class Post
 				if(is_array($mypost) && $mypost['userid'] != $userid)
 				{
 					content_i_follow($userid, $mypost);
+
+					add_notification($_SESSION['petbook_userid'], "comment", $single_post);
 				}
 
-				$sql = "update posts set comments = comments + 1 where postid = $parent limit 1";
+				$sql = "update posts set comments = comments + 1 where postid = '$parent' limit 1";
 
 				$DB->save($sql);
 
-
 			}
 
-			$query = "insert into posts (userid,postid,post,image, has_image, is_profile_image, is_cover_image, parent) values ('$userid', '$postid', '$post', '$myimage', '$has_image', '$is_profile_image', '$is_cover_image', '$parent')";
-
+			$query = "insert into posts (userid, postid, post, image, has_image, is_profile_image, is_cover_image, parent) values ('$userid', '$postid', '$post', '$myimage', '$has_image', '$is_profile_image', '$is_cover_image', '$parent')";
 
 			$DB->save($query);
 
