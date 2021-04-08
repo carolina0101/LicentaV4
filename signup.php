@@ -38,75 +38,81 @@
 
 <html>
 	<head>
-		<title>Petbook | SignUp </title>
+		<title>Petbook | Login </title>
 	</head>
 
 	<style>
 		#bar{
-			height:70px;
-			background-color: #c79d90;
-			color: #6b6554;
-			font-size: 35px;
+			height:82px;
+			background-image: linear-gradient(rgba(0, 0, 0, 0.233), rgba(0, 0, 0, 0.3)), url('bar.jpg');background-size: 800px; background-position: center;
+			color: #33163c;
+			font-size: 50px;
 			font-weight:bold;
 		}
 
 		#signup_button{
-			background-color: #f5e6ba;
-			font-size: 18px;
+			background-color:#c4c0bf;
+			font-size: 20px;
 			text-align: center;
-			width: 73px;
-			padding:4px;
+			margin-top: -55px;
+			margin-right: 10px;
+			width: 70px;
+			padding:7px;
 			float:right;
 			font-weight:bold;
-			border-radius: 5px;
+			border-radius: 10px;
 
 		}
 		#bar2{
-			background-color: #ede4e6;
-			font-size: 20px;
+			background-color: linear-gradient(rgb(241, 201, 252), rgb(241, 201, 252));
+			font-size: 40px;
 			width: 800px;
-			height: 510px;
+			height: 170px;
 			margin:auto;
-			margin-top: 50px;
-			padding: 20px;
+			margin-top: 1px;
+			padding: 6px;
 			text-align: center;
 		}
 
 		#text{
 			height: 40px;
-			width: 300px;
+			width: 400px;
 			border-radius: 4px;
 			border: solid 1px #888;
+			margin-right: 10px;
 			padding: 4px;
 			font-size: 14px;
 		}
 
 		#button{
-			width: 300px;
+			width: 200px;
 			height: 40px;
 			border-radius: 4px;
 			font-weight: bold;
-			background-color: #c79d90;
+			background-color: #a4938e;
 
 		}
+
 	</style>
 
 	<body  style="font-family: Optima;
-				  background-color: #f3eff7;">
+					background-size: cover;
+					background-position: center;
+					background-image: linear-gradient(rgba(0, 0, 0, 0.230), rgba(0, 0, 0, 0.5)), url('signupbk.jpg'); ;">
 		<div id="bar">
-			<div style="font-size: 35px;"> Petbook</div>
+			<div style="font-size: 75px; font-family: Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; right: 10%;"> Petbook</div>
 			<a href="login.php">
 			<div id="signup_button">Login</div>
 			</a>
 		</div>
 		<div id="bar2">
-			Sign up to virtual house for animals<br><br>
 			<form method="post" action="">
-
+			<div style="font-size: 45px;font-weight: bold; color:#0e0b0e; font-family: American Typewriter, serif;">
+				Sign up to virtual house for animals<br><br></div>
 				<input value="<?php echo $first_name ?>" name="first_name" type="text" id="text" placeholder="First Name"><br><br>
-				<input value="<?php echo $last_name ?>" name="last_name" type="text" id="text" placeholder="Last Name"><br><br>
-
-				Gender:<br>
+				<input value="<?php echo $last_name ?>" name="last_name" type="text" id="text" placeholder="Last Name"><br>
+				<div style="font-size: 30px">
+				Gender:<br></div>
 				<select id="text" name="gender">
 					<option><?php echo $gender ?></option>
 					<option>Female</option>
