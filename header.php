@@ -37,7 +37,7 @@
 		 		</a>
 				 <a href="notifications.php">
 				<span style="display:inline-block;position:relative;">
-				<img src = "notif.png" style="width:34px;float:right;margin-top: 20px; ">
+				<img src = "notificare.png" style="width:34px;float:right;margin-top: 20px; ">
 
 				<?php
 
