@@ -239,12 +239,13 @@
 				}
 
 			?>
+			<br>
 
 			<a href="like.php?type=user&id=<?php echo $user_data['userid'] ?>">
 			<input id="post_button" type = "button" value="Follow<?php echo $mylikes ?>" style="margin-right:5px; background-color: #9e6378; width:135px;">
 			</a>
 
-		    </br>
+			<br>
 
 
 
