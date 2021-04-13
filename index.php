@@ -127,7 +127,7 @@
 
 	#post_button{
 		float: right;
-		background-color: #c79d90;
+		background-color: #876c64;
 		border:none;
 		color: white;
 		padding: 7px;
@@ -151,7 +151,7 @@
 
 
 </style>
-<body style="font-family: tahoma; background-color: #f3eff7">
+<body style="font-family: tahoma; background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('indexbk.jpg'); ">
 	<br>
 	<?php include("header.php"); ?>
 	<!--cover-->

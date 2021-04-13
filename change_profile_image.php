@@ -138,8 +138,10 @@
 	<style type="text/css">
 		#purple_bar{
 			height:72px;
-			background-color: #c79d90;
-			color: #6b6554;
+			background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('bar.jpg');background-size: 800px; background-position: center;
+			color: #33163c;
+			font-size: 50px;
+			font-weight:bold;
 		}
 
 		#search_box{
@@ -158,7 +160,7 @@
 
 		#post_button{
 			float: right;
-			background-color: #c79d90;
+			background-color: #876c64;
 			border:none;
 			color: white;
 			padding: 7px;
@@ -168,7 +170,7 @@
 
 		}
 		#post_bar{
-			margin-top: 20px;
+			margin-top: 24px;
 			background-color:#ede4e6;
 			padding: 10px;
 		}
@@ -182,7 +184,7 @@
 
 
 	</style>
-	<body style="font-family: tahoma; background-color: #f3eff7">
+	<body style="font-family: tahoma; background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('changebk.jpg'); ">
 		<br>
 		<?php include("header.php"); ?>
 		<!--cover-->

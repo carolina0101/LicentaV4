@@ -142,7 +142,7 @@
 	}
 
 	#friends_bar{
-		background-color: #ede4e6;
+		background-color: #8c4a4a40;
 		min-height: 400px;
 		margin-top:20px;
 		color: black;
@@ -166,7 +166,7 @@
 
 	#post_button{
 		float: right;
-		background-color: #c79d90;
+		background-color: #876c64;
 		border:none;
 		color: white;
 		padding: 7px;
@@ -178,7 +178,7 @@
 	}
     #post_bar{
     	margin-top: 20px;
-    	background-color:#ede4e6;
+    	background-color:#c680802b;
     	padding: 10px;
     }
 
@@ -191,7 +191,7 @@
 
 
 </style>
-<body style="font-family: tahoma; background-color: #f3eff7">
+<body style="font-family: tahoma; background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('profilebk.jpg'); ;">
 	<br>
 	<?php include("header.php"); ?>
 	<!--cover-->
@@ -244,7 +244,7 @@
 			<br>
 
 			<a href="like.php?type=user&id=<?php echo $user_data['userid'] ?>">
-			<input id="post_button" type = "button" value="Follow<?php echo $mylikes ?>" style="margin-right:5px; background-color: #9e6378; width:135px;">
+			<input id="post_button" type = "button" value="Follow<?php echo $mylikes ?>" style="margin-right:5px; background-color: #a68277; width:135px;">
 			</a>
 
 			<br>
