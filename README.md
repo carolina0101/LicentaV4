@@ -1,1 +1,4 @@
 # LicentaV4
+Aplicația Petbook reprezintă o alternativă online pentru utilizatori, care vine în ajutorul persoanelor iubitoare de animale, pentru o mai bună comunicare a acestora între ei și pentru a împărtăși forografii, știri și păreri. 
+Totodată aplicația oferă un sistem ușor de folosit, asemănător cu cel al altor rețele de socializare, prielnic de utilizat pentru orice categorie de vârstă. Membrii aplicației vor beneficia de dreptul de a posta fotografii, știri și întrebări. De asemenea poate aprecia sau comenta postările prietenilor săi patrupezi, în numele animăluțului său.
+Pentru a putea folosi aplicația, utilizatorul este nevoit să se înscrie, înregistrându-se în baza de date. Formularul ce trebuie completat va fi în numele animăluțului său, iar datele necesare identificării sunt nume, poreclă, gen, email și parolă. Cu ajutorul acestui formular de înscriere, utilizatorii pot beneficia de toate funcțiile aplicației. 
