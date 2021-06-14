@@ -55,8 +55,10 @@
 <style type="text/css">
 	#purple_bar{
 		height:72px;
-		background-color: #c79d90;
-		color: #6b6554;
+		background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('bar.jpg');background-size: 800px; background-position: center;
+		color: #33163c;
+		font-size: 50px;
+		font-weight:bold;
 	}
 
 	#search_box{
@@ -142,7 +144,7 @@
 
 
 </style>
-<body style="font-family: tahoma; background-color: #f3eff7">
+<body style="font-family: tahoma; background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('fullimgbk.jpg');">
 	<br>
 	<?php include("header.php"); ?>
 	<!--cover-->

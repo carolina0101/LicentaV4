@@ -87,7 +87,7 @@
 							$post->create_post($userid, $_POST, $filename);
 
 							header(("Location: profile.php"));
-							die;
+							//die;
 						}
 						else
 						{

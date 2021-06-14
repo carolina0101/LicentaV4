@@ -9,4 +9,3 @@
 	include("classes/image.php");
 	include("classes/profile.php");
 	include("classes/settings.php");
-	include("ajax/like.ajax.php");

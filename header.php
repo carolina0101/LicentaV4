@@ -1,7 +1,16 @@
 	<!--top bar-->
 <?php
 
-	$corner_image = " images/profileimage.jpg";
+
+	$userid_img = $_SESSION['petbook_userid'];
+	$DB = new Database();
+	$img_query="select profile_image from users where userid='$userid_img' ";
+	$corner_image_temp = $DB->read($img_query);
+
+	$corner_image_t1 = $corner_image_temp[0];
+	$corner_image=$corner_image_t1['profile_image'];
+
+
 	if(isset($USER))
 	{
 			if(file_exists($USER['profile_image']))
@@ -12,7 +21,7 @@
 			{
 				if($USER['gender'] == "Female")
 				{
-					$corner_image = " images/profileimage.jpg";
+					$corner_image=$corner_image_t1['profile_image'];
 				}
 			}
 	}
@@ -20,7 +29,7 @@
 ?>
 	<div id="purple_bar">
 			<form method="get" action="search.php">
-				<div style="width: 980px; margin:auto; font-size: 38px;">
+				<div style="width: 1000px; margin:auto; font-size: 38px;">
 				<a href="index.php" style="color: #6b6554;">Petbook</a>
 
 				&nbsp &nbsp <input type="text" id="search_box" name='find' placeholder="Search for another animals">

@@ -22,7 +22,7 @@
 		} else
 		{
 			header("Location: login.php");
-			die;
+			//die;
 		}
 
 		$first_name = $_POST['first_name'];
@@ -108,9 +108,9 @@
 		<div id="bar2">
 			<form method="post" action="">
 			<div style="font-size: 45px;font-weight: bold; color:#0e0b0e; font-family: American Typewriter, serif;">
-				Sign up to virtual house for animals<br><br></div>
+				Sign up to the virtual house for animals<br><br></div>
 				<input value="<?php echo $first_name ?>" name="first_name" type="text" id="text" placeholder="First Name"><br><br>
-				<input value="<?php echo $last_name ?>" name="last_name" type="text" id="text" placeholder="Last Name"><br>
+				<input value="<?php echo $last_name ?>" name="last_name" type="text" id="text" placeholder="Nickname"><br>
 				<div style="font-size: 30px">
 				Gender:<br></div>
 				<select id="text" name="gender">

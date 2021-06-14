@@ -130,7 +130,9 @@
 							if($ROW['likes'] > 0)
 							{
 								echo "<br/>";
+
 								echo "<a href='likes.php?type=post&id=$ROW[postid]'>";
+
 
 								if($ROW['likes'] == 1)
 								{

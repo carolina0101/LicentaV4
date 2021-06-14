@@ -45,7 +45,7 @@
 			if($result == "")
 			{
 				header("Location: profile.php");
-				die;
+				//die;
 			}else
 			{
 				echo"<div style='text-align:center;font-size: 12px; color:white;background-color:grey;'>";
@@ -195,8 +195,7 @@
 	<br>
 	<?php include("header.php"); ?>
 	<!--cover-->
-	<div style="width: 700px; margin:auto; min-height: 400px;">
-
+	<div style="width: 750px; margin:auto; min-height: 400px;">
 		<div style=" background-color: white; text-align: center;color: black">
 
 			<?php
@@ -225,7 +224,7 @@
 				?>
 
 				<img id="profile_pic" src="<?php echo $image?>"><br/>
-				<a  style="text-decoration: none; color:#a1705f" href="change_profile_image.php?change=profile">change profle image</a> -||-
+				<a  style="text-decoration: none; color:#a1705f" href="change_profile_image.php?change=profile">change profile image</a> -||-
 				<a  style="text-decoration: none; color:#a1705f" href="change_profile_image.php?change=cover"> change cover</a>
 			</span>
 			<br>

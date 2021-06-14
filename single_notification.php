@@ -87,8 +87,8 @@
             $content_row = $postari->get_one_post($notif_row['contentid']);
 
 
-
-            // var_dump($content_row);
+            // echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';
+            //  var_dump($content_row);
             if($notif_row['content_type'] == "post")
             {
 
@@ -115,11 +115,13 @@
 
                   //var_dump($content_row);
                 echo $notif_row['content_type'];
-                // <echo '<pre>' , var_dump($user_data) , '</pre>';
+               // echo '<br> ', '<br> ', '<br> ','<br> ', '<br> ', '<br> ','<br> ', '<br> ', '<br> ', '<pre>' , var_dump($content_row) , '</pre>' ;
                 if($notif_row['contentid']!=0){
-                echo"
-                        <span style='float:right;font-size:11px;color:#888;display:inline-block; margin-right: 5px;'>'".htmlspecialchars(substr($content_row["post"],0,50))."'</span>
-                        ";
+                if($content_row){
+                    echo"
+                            <span style='float:right;font-size:11px;color:#888;display:inline-block; margin-right: 5px;'>'".htmlspecialchars(substr($content_row['post'],0,50))."'</span>
+                            ";
+                    }
                 }
             }
 

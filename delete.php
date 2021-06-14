@@ -58,7 +58,7 @@
     {
         $postare->delete_post($_POST['postid']);
 		header("Location: ".$_SESSION['return_to']);
-        die;
+        //die;
     }
 
 
@@ -161,7 +161,7 @@
 
 
 </style>
-<body style="font-family: tahoma; background-color: #f3eff7">
+<body style="font-family: tahoma; background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('deletebk.jpg');">
 	<br>
 	<?php include("header.php"); ?>
 	<!--cover-->

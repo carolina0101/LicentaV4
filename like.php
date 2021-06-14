@@ -61,4 +61,4 @@ if(isset($_SERVER['HTTP_REFERER']))
     }
 
 header("Location: ". $return_to);
-die;
+//die;

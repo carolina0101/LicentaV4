@@ -41,8 +41,9 @@ if($_SESSION['petbook_userid'] == 0)
             {
 
                 $user_class = new User();
+
                 $post->like_post($_GET['id'], $_GET['type'], $_SESSION['petbook_userid']);
-                die;
+                //die;
 
 
                 if($_GET['type'] == "user")
@@ -54,5 +55,5 @@ if($_SESSION['petbook_userid'] == 0)
             }
 
         }
-        $likes = $post->get_likes($_GET['id'], $_GET['type']);
+    //    / $likes = $post->get_likes($_GET['id'], $_GET['type']);
     }

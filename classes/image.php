@@ -1,5 +1,4 @@
 <?php
-//testcomm
 class Image
 {
 

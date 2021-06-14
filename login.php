@@ -24,7 +24,7 @@ session_start();
 		} else
 		{
 			header("Location: profile.php");
-			die;
+			//die;
 		}
 
 		$email = $_POST['email'];

@@ -20,7 +20,7 @@ class Login
 		{
 			$row = $result[0];
 
-			if($password == $row['password'])
+			if($this->hash_text($password) == $row['password'])
 			{
 				//create a session data
 				$_SESSION['petbook_userid'] = $row['userid'];
@@ -36,6 +36,13 @@ class Login
 		}
 
 		return $this->error;
+	}
+
+	public function hash_text($text)
+	{
+		$text = hash("sha1", $text);
+		return $text;
+
 	}
 
 	public function check_login($id)
@@ -55,13 +62,13 @@ class Login
 		}else
 		{
 			header("Location: login.php");
-			die;
+			//die;
 		}
 
 		}else
 		{
 			header("Location: login.php");
-			die;
+			//die;
 		}
 
 	}

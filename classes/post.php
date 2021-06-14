@@ -162,7 +162,7 @@ class Post
 	public function get_posts($id)
 	{
 
-		$query = "select * from posts where parent = 0 and userid = '$id' order by id desc limit 100";
+		$query = "select * from posts where parent = 0 and userid = '$id' order by id desc limit 10";
 
 		$DB = new Database();
 		$result = $DB->read($query);
@@ -203,9 +203,10 @@ class Post
 			return false;
 		}
 		$query = "select * from posts where postid ='$postid' limit 1";
-
+		//var_dump($query);
 		$DB = new Database();
 		$result = $DB->read($query);
+		//echo '<pre>' , var_dump($result) , '</pre>';
 
 		if($result)
 		{
@@ -350,8 +351,9 @@ class Post
 					if($type != "user")
 					{
 						$post = new Post();
+						//var_dump($id);
 						$single_post = $post->get_one_post($id);
-
+						//var_dump($single_post); print_r('SPATIU');
 						//add notif
 
 						add_notification($_SESSION['petbook_userid'], "like", $single_post);

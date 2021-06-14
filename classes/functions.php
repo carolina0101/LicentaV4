@@ -31,7 +31,9 @@
 
     function add_notification($userid, $activity, $row)
     {
+
         $row = (object)$row;
+
         $userid = esc($userid);
         $activity = esc($activity);
         $content_owner =$row->userid;
